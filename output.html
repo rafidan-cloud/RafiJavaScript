@@ -2,199 +2,378 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<title>Output JavaScript</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>Output JavaScript</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
+
 :root{
-  --bg:#f5f7fb;
-  --card:#ffffff;
-  --text:#1f2937;
-  --sub:#6b7280;
-  --border:#e6eaf0;
-  --accent:#5b7cfa;
-  --shadow:0 12px 30px rgba(0,0,0,0.06);
+    --bg:#070b14;
+    --card:#101826;
+    --card2:#172235;
+    --text:#f8fafc;
+    --sub:#8fa0bb;
+    --line:rgba(255,255,255,0.06);
+    --accent:#5ea2ff;
+    --glow:rgba(94,162,255,0.35);
 }
 
-body.dark{
-  --bg:#0b1220;
-  --card:#0f172a;
-  --text:#e5e7eb;
-  --sub:#9ca3af;
-  --border:#1f2937;
-  --accent:#7c8cff;
-  --shadow:0 12px 30px rgba(0,0,0,0.45);
+body.light{
+    --bg:#eef3fb;
+    --card:#ffffff;
+    --card2:#f8fbff;
+    --text:#0f172a;
+    --sub:#64748b;
+    --line:#e2e8f0;
+    --accent:#3b82f6;
+    --glow:rgba(59,130,246,0.18);
 }
 
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Inter',sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter',sans-serif;
 }
 
 body{
-  background:var(--bg);
-  color:var(--text);
-  min-height:100vh;
-  padding:42px 16px;
-  transition:.5s ease;
+    background:var(--bg);
+    color:var(--text);
+
+    min-height:100vh;
+
+    padding:20px;
+
+    overflow-x:hidden;
+
+    transition:.3s;
 }
+
+/* BG GLOW */
+
+.blur{
+    position:fixed;
+    width:320px;
+    height:320px;
+
+    border-radius:50%;
+
+    background:var(--glow);
+
+    filter:blur(90px);
+
+    z-index:-1;
+}
+
+.blur1{
+    top:-120px;
+    left:-80px;
+}
+
+.blur2{
+    bottom:-120px;
+    right:-80px;
+}
+
+/* CONTAINER */
 
 .container{
-  max-width:760px;
-  margin:auto;
-  animation:fadeIn .6s ease;
+    width:100%;
+    max-width:1100px;
+    margin:auto;
 }
 
-@keyframes fadeIn{
-  from{opacity:0; transform:translateY(10px)}
-  to{opacity:1; transform:translateY(0)}
+/* TOPBAR */
+
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:40px;
 }
 
-.header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:28px;
+.left h1{
+    font-size:42px;
+    font-weight:800;
+    letter-spacing:-2px;
+
+    margin-bottom:8px;
 }
 
-h2{
-  font-size:22px;
-  font-weight:600;
-  letter-spacing:0.2px;
+.left p{
+    color:var(--sub);
+    font-size:15px;
 }
 
-.toggle{
-  font-size:13px;
-  cursor:pointer;
-  color:var(--sub);
-  padding:6px 10px;
-  border-radius:10px;
-  border:1px solid var(--border);
-  transition:.3s;
+.mode{
+    width:52px;
+    height:52px;
+
+    border-radius:20px;
+
+    background:rgba(255,255,255,0.04);
+
+    border:1px solid var(--line);
+
+    backdrop-filter:blur(12px);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+    transition:.25s;
 }
 
-.toggle:hover{
-  color:var(--accent);
-  border-color:var(--accent);
+.mode:hover{
+    transform:translateY(-4px) rotate(8deg);
 }
 
-.item{
-  padding:18px;
-  margin-bottom:14px;
-  border-radius:16px;
-  background:var(--card);
-  border:1px solid var(--border);
-  box-shadow:var(--shadow);
-  transition:.35s ease;
-  position:relative;
-  overflow:hidden;
+/* GRID */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:24px;
 }
 
-.item::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(120deg,transparent,rgba(91,124,250,0.08),transparent);
-  transform:translateX(-100%);
-  transition:.6s;
+/* CARD */
+
+.card{
+    position:relative;
+
+    background:linear-gradient(180deg,var(--card),var(--card2));
+
+    border:1px solid var(--line);
+
+    border-radius:34px;
+
+    padding:28px;
+
+    overflow:hidden;
+
+    transition:.3s;
 }
 
-.item:hover::before{
-  transform:translateX(100%);
+.card::before{
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+    linear-gradient(
+        130deg,
+        transparent,
+        rgba(255,255,255,0.04),
+        transparent
+    );
+
+    transform:translateX(-100%);
+    transition:.7s;
 }
 
-.item:hover{
-  transform:translateY(-4px);
+.card:hover::before{
+    transform:translateX(100%);
 }
 
-.title{
-  font-weight:600;
-  font-size:15px;
+.card:hover{
+    transform:translateY(-8px);
+    border-color:rgba(94,162,255,0.25);
+    box-shadow:0 20px 50px rgba(0,0,0,0.22);
 }
 
-.desc{
-  font-size:13px;
-  color:var(--sub);
-  margin:6px 0 12px;
-  line-height:1.4;
+/* ICON */
+
+.icon{
+    width:74px;
+    height:74px;
+
+    border-radius:26px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:34px;
+
+    background:rgba(94,162,255,0.12);
+
+    border:1px solid rgba(94,162,255,0.14);
+
+    margin-bottom:24px;
 }
 
-button{
-  padding:8px 14px;
-  font-size:13px;
-  border-radius:10px;
-  border:1px solid var(--border);
-  background:transparent;
-  cursor:pointer;
-  font-weight:500;
-  transition:.25s;
+/* TEXT */
+
+.card h3{
+    font-size:24px;
+    letter-spacing:-0.8px;
+
+    margin-bottom:10px;
 }
 
-button:hover{
-  background:var(--accent);
-  color:#fff;
-  border-color:var(--accent);
-  transform:translateY(-1px);
+.card p{
+    color:var(--sub);
+
+    font-size:14px;
+    line-height:1.8;
+
+    margin-bottom:24px;
 }
+
+/* BUTTON */
+
+.btn{
+    width:100%;
+
+    padding:16px;
+
+    border:none;
+    border-radius:22px;
+
+    background:rgba(94,162,255,0.12);
+
+    border:1px solid rgba(94,162,255,0.16);
+
+    color:var(--text);
+
+    font-size:15px;
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+.btn:hover{
+    background:var(--accent);
+    color:white;
+
+    transform:translateY(-3px);
+}
+
+/* OUTPUT */
 
 .output{
-  margin-top:18px;
-  padding:14px;
-  border-radius:14px;
-  border:1px solid var(--border);
-  background:var(--card);
-  min-height:52px;
-  font-size:14px;
-  box-shadow:var(--shadow);
-  transition:.3s;
+    margin-top:28px;
+
+    background:rgba(255,255,255,0.03);
+
+    border:1px solid var(--line);
+
+    border-radius:30px;
+
+    padding:24px;
+
+    min-height:90px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    color:var(--sub);
+
+    font-size:15px;
+    line-height:1.8;
+
+    backdrop-filter:blur(12px);
 }
 
-/* BACK BUTTON PREMIUM */
+/* BACK */
+
 .back{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  margin-top:26px;
-  padding:10px 16px;
-  font-size:13px;
-  text-decoration:none;
-  color:var(--text);
-  border:1px solid var(--border);
-  border-radius:12px;
-  background:var(--card);
-  box-shadow:var(--shadow);
-  transition:.3s;
+    width:100%;
+
+    margin-top:20px;
+
+    padding:18px;
+
+    border:none;
+    border-radius:26px;
+
+    background:var(--text);
+    color:var(--bg);
+
+    font-size:15px;
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.25s;
 }
 
 .back:hover{
-  background:linear-gradient(135deg,var(--accent),#8aa0ff);
-  color:#fff;
-  transform:translateY(-2px);
+    transform:translateY(-4px);
+    opacity:.94;
 }
 
-.toast{
-  position:fixed;
-  bottom:24px;
-  left:50%;
-  transform:translateX(-50%);
-  background:var(--card);
-  color:var(--text);
-  padding:10px 16px;
-  border-radius:12px;
-  border:1px solid var(--border);
-  box-shadow:var(--shadow);
-  opacity:0;
-  transition:.4s;
-  font-size:13px;
+/* MOBILE */
+
+@media(max-width:850px){
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    .left h1{
+        font-size:34px;
+    }
 }
 
-.toast.show{
-  opacity:1;
-  transform:translateX(-50%) translateY(-6px);
+@media(max-width:600px){
+
+    body{
+        padding:14px;
+    }
+
+    .topbar{
+        margin-bottom:26px;
+    }
+
+    .left h1{
+        font-size:28px;
+    }
+
+    .left p{
+        font-size:13px;
+    }
+
+    .card{
+        padding:22px;
+        border-radius:28px;
+    }
+
+    .card h3{
+        font-size:20px;
+    }
+
+    .icon{
+        width:66px;
+        height:66px;
+        border-radius:22px;
+        font-size:30px;
+    }
+
+    .btn,
+    .back{
+        font-size:14px;
+    }
+
+    .output{
+        font-size:14px;
+        border-radius:24px;
+    }
 }
 
 </style>
@@ -202,78 +381,174 @@ button:hover{
 
 <body>
 
+<div class="blur blur1"></div>
+<div class="blur blur2"></div>
+
 <div class="container">
 
-<div class="header">
-  <h2>Fungsi Output JavaScript</h2>
-  <div class="toggle" onclick="mode()">🌙 / ☀️ Mode</div>
+    <div class="topbar">
+
+        <div class="left">
+
+            <h1>Output JavaScript</h1>
+
+            <p>
+                Berbagai cara menampilkan output menggunakan JavaScript
+            </p>
+
+        </div>
+
+        <div class="mode" onclick="mode()">
+            ☾
+        </div>
+
+    </div>
+
+    <div class="grid">
+
+        <div class="card">
+
+            <div class="icon">
+                📝
+            </div>
+
+            <h3>document.write()</h3>
+
+            <p>
+                Menampilkan output langsung pada halaman baru.
+            </p>
+
+            <button class="btn" onclick="pakaiWrite()">
+                Jalankan
+            </button>
+
+        </div>
+
+        <div class="card">
+
+            <div class="icon">
+                🔔
+            </div>
+
+            <h3>alert()</h3>
+
+            <p>
+                Menampilkan popup notifikasi sederhana.
+            </p>
+
+            <button class="btn" onclick="pakaiAlert()">
+                Jalankan
+            </button>
+
+        </div>
+
+        <div class="card">
+
+            <div class="icon">
+                💻
+            </div>
+
+            <h3>console.log()</h3>
+
+            <p>
+                Menampilkan output pada console browser.
+            </p>
+
+            <button class="btn" onclick="pakaiConsole()">
+                Jalankan
+            </button>
+
+        </div>
+
+        <div class="card">
+
+            <div class="icon">
+                ✨
+            </div>
+
+            <h3>innerHTML</h3>
+
+            <p>
+                Menampilkan output langsung di halaman web.
+            </p>
+
+            <button class="btn" onclick="pakaiHTML()">
+                Jalankan
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="output" id="output">
+        Hasil output akan tampil di sini
+    </div>
+
+    <button class="back" onclick="kembali()">
+        Kembali ke Index
+    </button>
+
 </div>
-
-<div class="item">
-  <div class="title">document.write()</div>
-  <div class="desc">Menulis langsung ke halaman web (dibuka di tab baru)</div>
-  <button onclick="pakaiWrite()">jalankan</button>
-</div>
-
-<div class="item">
-  <div class="title">alert()</div>
-  <div class="desc">Menampilkan popup notifikasi sederhana</div>
-  <button onclick="pakaiAlert()">jalankan</button>
-</div>
-
-<div class="item">
-  <div class="title">console.log()</div>
-  <div class="desc">Menampilkan output di console browser (F12)</div>
-  <button onclick="pakaiConsole()">jalankan</button>
-</div>
-
-<div class="item">
-  <div class="title">innerHTML</div>
-  <div class="desc">Menampilkan output langsung di halaman web</div>
-  <button onclick="pakaiHTML()">jalankan</button>
-</div>
-
-<div class="output" id="output">hasil akan muncul di sini...</div>
-
-<a href="index.html" class="back">← Kembali ke Index</a>
-
-</div>
-
-<div class="toast" id="toast"></div>
 
 <script>
-function mode(){
-  document.body.classList.toggle("dark");
+
+const output = document.getElementById("output");
+
+function tampil(teks){
+    output.innerHTML = teks;
 }
 
-function toast(msg){
-  let t=document.getElementById("toast");
-  t.innerText=msg;
-  t.classList.add("show");
-  setTimeout(()=>t.classList.remove("show"),1500);
+function mode(){
+    document.body.classList.toggle("light");
 }
 
 function pakaiWrite(){
-  let w=window.open("","_blank");
-  w.document.write("<h2 style='font-family:sans-serif'>Output document.write()</h2>");
-  toast("document.write dijalankan");
+
+    let w = window.open("", "_blank");
+
+    w.document.write(`
+        <div style="
+        font-family:Inter,sans-serif;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        height:100vh;
+        margin:0;
+        background:#0f172a;
+        color:white;
+        font-size:32px;
+        font-weight:700;
+        ">
+        Output document.write()
+        </div>
+    `);
+
+    tampil("document.write() berhasil dijalankan");
 }
 
 function pakaiAlert(){
-  alert("ini alert()");
-  toast("alert ditampilkan");
+
+    alert("Ini alert JavaScript");
+
+    tampil("alert() berhasil ditampilkan");
 }
 
 function pakaiConsole(){
-  console.log("ini console.log()");
-  document.getElementById("output").innerHTML="cek console (F12)";
-  toast("cek console browser");
+
+    console.log("Ini console.log()");
+
+    tampil("Buka console browser menggunakan F12");
 }
 
 function pakaiHTML(){
-  document.getElementById("output").innerHTML="output innerHTML aktif ✨";
-  toast("innerHTML tampil");
+
+    tampil("Output innerHTML berhasil ditampilkan ✨");
 }
+
+function kembali(){
+    window.location.href = "index.html";
+}
+
 </script>
 
 </body>
