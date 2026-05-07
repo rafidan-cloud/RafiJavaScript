@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Perulangan Hari</title>
+
+<style>
+:root{
+  --bg:#f6f7f9;
+  --card:#ffffff;
+  --text:#1e1e1e;
+  --sub:#777;
+  --border:#e5e5e5;
+}
+
+body.dark{
+  --bg:#0f0f10;
+  --card:#1a1a1a;
+  --text:#f1f1f1;
+  --sub:#aaa;
+  --border:#2a2a2a;
+}
+
+body{
+  margin:0;
+  font-family: 'Segoe UI', sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  transition:.3s;
+}
+
+/* CONTAINER */
+.container{
+  max-width:850px;
+  margin:50px auto;
+  background:var(--card);
+  padding:30px;
+  border-radius:20px;
+  border:1px solid var(--border);
+}
+
+/* HEADER */
+.header{
+  text-align:center;
+  margin-bottom:20px;
+}
+
+.header h2{
+  margin:0;
+  font-weight:600;
+}
+
+.header p{
+  font-size:14px;
+  color:var(--sub);
+}
+
+/* BUTTON */
+.button-group{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin-bottom:15px;
+}
+
+button{
+  padding:9px 16px;
+  border-radius:20px;
+  border:1px solid var(--border);
+  background:transparent;
+  cursor:pointer;
+  font-size:13px;
+  color:var(--text);
+  transition:.2s;
+}
+
+button:hover{
+  background:var(--text);
+  color:var(--card);
+}
+
+/* OUTPUT */
+.output{
+  max-height:340px;
+  overflow:auto;
+  padding:12px;
+  border-radius:12px;
+  border:1px solid var(--border);
+}
+
+/* ITEM */
+.item{
+  padding:6px 10px;
+  margin:3px 0;
+  font-size:13px;
+  border-radius:8px;
+  transition:.2s;
+}
+
+.item:hover{
+  background:rgba(0,0,0,0.05);
+}
+
+body.dark .item:hover{
+  background:rgba(255,255,255,0.08);
+}
+
+/* STATS */
+.stats{
+  text-align:center;
+  font-size:13px;
+  color:var(--sub);
+  margin-bottom:10px;
+}
+
+/* BACK */
+.back-btn{
+  margin-top:20px;
+  width:100%;
+  padding:12px;
+  border-radius:25px;
+  border:none;
+  background:var(--text);
+  color:var(--card);
+  cursor:pointer;
+  font-weight:500;
+  transition:.2s;
+}
+
+.back-btn:hover{
+  opacity:0.85;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<div class="header">
+  <h2>Perulangan Hari</h2>
+</div>
+
+<div class="button-group">
+  <button onclick="generate()">Generate</button>
+  <button onclick="toggleMode()">Mode</button>
+  <button onclick="clearOutput()">Reset</button>
+</div>
+
+<div id="stats" class="stats">Belum ada data</div>
+
+<div id="output" class="output">
+Klik generate untuk melihat hasil...
+</div>
+
+<button class="back-btn" onclick="kembali()">Kembali ke Index</button>
+
+</div>
+
+<script>
+
+var days = ["Senin","Selasa","Rabu","Kamis","Jumat","Sabtu","Minggu"];
+
+function generate(){
+  let out = "";
+  let count = 0;
+
+  for(let i=0;i<days.length;i++){
+    for(let j=0;j<days.length;j++){
+      for(let k=0;k<days.length;k++){
+        count++;
+        out += `<div class="item">${count}. ${days[i]} - ${days[j]} - ${days[k]}</div>`;
+      }
+    }
+  }
+
+  document.getElementById("output").innerHTML = out;
+  document.getElementById("stats").innerText = "Total: " + count + " kombinasi";
+}
+
+function clearOutput(){
+  document.getElementById("output").innerHTML = "Output dikosongkan...";
+  document.getElementById("stats").innerText = "Belum ada data";
+}
+
+function toggleMode(){
+  document.body.classList.toggle("dark");
+}
+
+function kembali(){
+  window.location.href = "index.html";
+}
+
+</script>
+
+</body>
+</html>

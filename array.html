@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Array Sekolah</title>
+
+<style>
+:root{
+    --bg:#f6f7f9;
+    --card:#ffffff;
+    --text:#1e1e1e;
+    --sub:#777;
+    --border:#e5e5e5;
+}
+
+body.dark{
+    --bg:#0f0f10;
+    --card:#1a1a1a;
+    --text:#f1f1f1;
+    --sub:#aaa;
+    --border:#2a2a2a;
+}
+
+body{
+    font-family: Arial;
+    margin:0;
+    padding:30px;
+    background:var(--bg);
+    color:var(--text);
+    transition:.3s;
+}
+
+/* CONTAINER */
+.container{
+    max-width:650px;
+    margin:auto;
+    background:var(--card);
+    padding:25px;
+    border-radius:20px;
+    border:1px solid var(--border);
+}
+
+/* HEADER */
+h2{
+    text-align:center;
+    margin-bottom:10px;
+}
+
+.sub{
+    text-align:center;
+    font-size:13px;
+    color:var(--sub);
+    margin-bottom:15px;
+}
+
+/* BUTTON */
+.button-group{
+    text-align:center;
+    margin-bottom:15px;
+}
+
+button{
+    padding:9px 16px;
+    border-radius:20px;
+    border:1px solid var(--border);
+    background:transparent;
+    cursor:pointer;
+    font-size:13px;
+    color:var(--text);
+    transition:.2s;
+}
+
+button:hover{
+    background:var(--text);
+    color:var(--card);
+}
+
+/* OUTPUT */
+#output{
+    margin-top:10px;
+    font-size:14px;
+    line-height:1.6;
+}
+
+/* SECTION STYLE */
+.section{
+    margin-top:15px;
+    padding:12px;
+    border-radius:12px;
+    border:1px solid var(--border);
+}
+
+/* BACK BUTTON */
+.back-btn{
+    margin-top:20px;
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:25px;
+    background:var(--text);
+    color:var(--card);
+    cursor:pointer;
+    font-weight:bold;
+    transition:.2s;
+}
+
+.back-btn:hover{
+    opacity:0.85;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h2>Program Array Sekolah</h2>
+<p class="sub">Manipulasi data array secara bertahap</p>
+
+<div class="button-group">
+    <button onclick="toggleMode()">🌙 / ☀️ Mode</button>
+</div>
+
+<div id="output"></div>
+
+<button class="back-btn" onclick="kembali()">⬅ Kembali ke Index</button>
+
+</div>
+
+<script>
+
+// 1. Membuat array nama sekolah
+var namaSekolah = ["SD", "SMP", "SMK", "Universitas"];
+var hasil = "";
+
+// 2. Tampilkan semua isi array
+hasil += "<div class='section'><b>Data Awal:</b><br>";
+for (var i = 0; i < namaSekolah.length; i++) {
+    hasil += namaSekolah[i] + "<br>";
+}
+hasil += "</div>";
+
+// 3. Ubah nama sekolah menjadi contoh baru
+for (var i = 0; i < namaSekolah.length; i++) {
+    if (namaSekolah[i] === "SD") {
+        namaSekolah[i] = "SD Kranji 1";
+    } else if (namaSekolah[i] === "SMP") {
+        namaSekolah[i] = "Al Azhar Mesir";
+    } else if (namaSekolah[i] === "SMK") {
+        namaSekolah[i] = "Al Azhar Turki";
+    }
+}
+
+// 4. Tampilkan setelah diubah
+hasil += "<div class='section'><b>Setelah Diubah:</b><br>";
+for (var i = 0; i < namaSekolah.length; i++) {
+    hasil += namaSekolah[i] + "<br>";
+}
+hasil += "</div>";
+
+// 5. Ganti SD dan SMP
+for (var i = 0; i < namaSekolah.length; i++) {
+    if (namaSekolah[i].indexOf("SD") !== -1) {
+        namaSekolah[i] = "Sekolah Idaman";
+    } else if (namaSekolah[i].indexOf("Mesir") !== -1) {
+        namaSekolah[i] = "Sekolah Nyaman";
+    }
+}
+
+// 6. Tampilkan lagi
+hasil += "<div class='section'><b>Setelah Diganti Lagi:</b><br>";
+for (var i = 0; i < namaSekolah.length; i++) {
+    hasil += namaSekolah[i] + "<br>";
+}
+hasil += "</div>";
+
+// 7. Hapus data tertentu
+for (var i = 0; i < namaSekolah.length; i++) {
+    if (namaSekolah[i] === "Sekolah Idaman" || namaSekolah[i] === "Universitas") {
+        namaSekolah.splice(i, 1);
+        i--;
+    }
+}
+
+// 8. Hasil akhir
+hasil += "<div class='section'><b>Setelah Dihapus:</b><br>";
+for (var i = 0; i < namaSekolah.length; i++) {
+    hasil += namaSekolah[i] + "<br>";
+}
+hasil += "</div>";
+
+// tampilkan
+document.getElementById("output").innerHTML = hasil;
+
+// dark mode
+function toggleMode(){
+    document.body.classList.toggle("dark");
+}
+
+// kembali
+function kembali(){
+    window.location.href = "index.html";
+}
+
+</script>
+
+</body>
+</html>

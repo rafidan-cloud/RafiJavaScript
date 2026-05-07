@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Profil Sekolah</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 30px;
+            transition: background 0.4s, color 0.4s;
+            overflow-y: auto; /* FIX SCROLL */
+        }
+
+        body.light {
+            background: linear-gradient(135deg, #fff1f2, #fafafa);
+            color: #1f1f1f;
+        }
+
+        body.dark {
+            background: linear-gradient(135deg, #0e0e0e, #1c1c1c);
+            color: #f5f5f5;
+        }
+
+        .app {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .topbar h1 {
+            color: #c1121f;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .toggle button {
+            background: transparent;
+            border: 2px solid #c1121f;
+            color: #c1121f;
+            padding: 8px 18px;
+            border-radius: 30px;
+            cursor: pointer;
+            margin-left: 10px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .toggle button:hover {
+            background: #c1121f;
+            color: #ffffff;
+        }
+
+        /* BACK BUTTON */
+        .back{
+            position:fixed;
+            top:20px;
+            left:20px;
+            padding:8px 16px;
+            border-radius:20px;
+            background:rgba(0,0,0,0.6);
+            color:#fff;
+            text-decoration:none;
+            font-size:14px;
+            z-index:1000;
+        }
+
+        .back:hover{
+            background:#000;
+        }
+
+        body.dark .back{
+            background:rgba(255,255,255,0.2);
+        }
+
+        body.dark .back:hover{
+            background:rgba(255,255,255,0.4);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.75);
+            backdrop-filter: blur(12px);
+            border-radius: 22px;
+            padding: 20px 22px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            transition: transform 0.3s, background 0.4s;
+        }
+
+        body.dark .card {
+            background: rgba(28,28,28,0.9);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #c1121f;
+            font-weight: 600;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .value {
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        a {
+            color: #c1121f;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 14px;
+            opacity: 0.7;
+        }
+    </style>
+
+    <script>
+        var nama = prompt("Karena Kamu Memilih Ke Smkn1 Purwokerto, Maka Sebukan Namamu", "");
+        document.write("<p>Hello "+ nama +"</p>");
+
+        var yakin = confirm("Apakah kamu yakin akan mengunjungi web sekolah saya?");
+        if (yakin) {
+            window.location = "https://smkn1purwokerto.sch.id/";
+        } else {
+            document.write("Baiklah, tetap di sini saja ya");
+        }
+
+        var name = "SMK Negeri 1 Purwokerto";
+        var name1 = "Jl. Dr. Soeparno No. 29, Purwokerto Timur, Kab. Banyumas, Prov. Jawa Tengah";
+        var name2 = "AKL, MPLB, TF, PM, DKV, PPLG, TJKT";
+        var visitorCount = "2128";
+        var url = "https://smkn1purwokerto.sch.id/";
+        var visitorCount2 = "120";
+        var name3 = "Badminton, Pramuka, dll";
+        var name4 = "Lapangan, Masjid, Lab, dll";
+        var visitorCount3 = "27";
+        var name5 = "Drs. Witoto";
+        var name6 = "Ichsan Romdhona, S.Pd.";
+        var name7 = "Dwi Prastanti Fajriatun, S.Pd.";
+        var name8 = "Seno Nugroho, S.Kom";
+
+        alert("Selamat datang " + nama + " di " +name );
+
+        function setLightMode() {
+            document.body.className = "light";
+        }
+
+        function setDarkMode() {
+            document.body.className = "dark";
+        }
+    </script>
+</head>
+
+<body class="light">
+
+<!-- TOMBOL KEMBALI -->
+<a href="index.html" class="back">⬅ Kembali</a>
+
+<div class="app">
+
+    <div class="topbar">
+        <h1>Profil Sekolah</h1>
+        <div class="toggle">
+            <button onclick="setLightMode()">☀ Light</button>
+            <button onclick="setDarkMode()">🌙 Dark</button>
+        </div>
+    </div>
+
+    <div class="grid">
+        <script>
+            document.write('<div class="card"><span class="label">Nama Sekolah</span><div class="value">' + name + '</div></div>');
+            document.write('<div class="card"><span class="label">Alamat</span><div class="value">' + name1 + '</div></div>');
+            document.write('<div class="card"><span class="label">Jurusan</span><div class="value">' + name2 + '</div></div>');
+            document.write('<div class="card"><span class="label">Jumlah Siswa</span><div class="value">' + visitorCount + '</div></div>');
+            document.write('<div class="card"><span class="label">Website</span><div class="value"><a href="' + url + '" target="_blank">' + url + '</a></div></div>');
+            document.write('<div class="card"><span class="label">Jumlah Guru</span><div class="value">' + visitorCount2 + '</div></div>');
+            document.write('<div class="card"><span class="label">Ekstrakurikuler</span><div class="value">' + name3 + '</div></div>');
+            document.write('<div class="card"><span class="label">Fasilitas</span><div class="value">' + name4 + '</div></div>');
+            document.write('<div class="card"><span class="label">Tenaga TU</span><div class="value">' + visitorCount3 + '</div></div>');
+            document.write('<div class="card"><span class="label">Kepala Sekolah</span><div class="value">' + name5 + '</div></div>');
+            document.write('<div class="card"><span class="label">Kapro</span><div class="value">' + name6 + '</div></div>');
+            document.write('<div class="card"><span class="label">Wali Kelas</span><div class="value">' + name7 + '</div></div>');
+            document.write('<div class="card"><span class="label">Guru Wali</span><div class="value">' + name8 + '</div></div>');
+        </script>
+    </div>
+
+    <footer>
+        © 2026 SMK Negeri 1 Purwokerto 
+    </footer>
+
+</div>
+
+</body>
+</html>

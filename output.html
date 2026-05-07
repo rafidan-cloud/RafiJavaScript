@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Output JavaScript</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#f5f7fb;
+  --card:#ffffff;
+  --text:#1f2937;
+  --sub:#6b7280;
+  --border:#e6eaf0;
+  --accent:#5b7cfa;
+  --shadow:0 12px 30px rgba(0,0,0,0.06);
+}
+
+body.dark{
+  --bg:#0b1220;
+  --card:#0f172a;
+  --text:#e5e7eb;
+  --sub:#9ca3af;
+  --border:#1f2937;
+  --accent:#7c8cff;
+  --shadow:0 12px 30px rgba(0,0,0,0.45);
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Inter',sans-serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+  padding:42px 16px;
+  transition:.5s ease;
+}
+
+.container{
+  max-width:760px;
+  margin:auto;
+  animation:fadeIn .6s ease;
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(10px)}
+  to{opacity:1; transform:translateY(0)}
+}
+
+.header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:28px;
+}
+
+h2{
+  font-size:22px;
+  font-weight:600;
+  letter-spacing:0.2px;
+}
+
+.toggle{
+  font-size:13px;
+  cursor:pointer;
+  color:var(--sub);
+  padding:6px 10px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  transition:.3s;
+}
+
+.toggle:hover{
+  color:var(--accent);
+  border-color:var(--accent);
+}
+
+.item{
+  padding:18px;
+  margin-bottom:14px;
+  border-radius:16px;
+  background:var(--card);
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+  transition:.35s ease;
+  position:relative;
+  overflow:hidden;
+}
+
+.item::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(120deg,transparent,rgba(91,124,250,0.08),transparent);
+  transform:translateX(-100%);
+  transition:.6s;
+}
+
+.item:hover::before{
+  transform:translateX(100%);
+}
+
+.item:hover{
+  transform:translateY(-4px);
+}
+
+.title{
+  font-weight:600;
+  font-size:15px;
+}
+
+.desc{
+  font-size:13px;
+  color:var(--sub);
+  margin:6px 0 12px;
+  line-height:1.4;
+}
+
+button{
+  padding:8px 14px;
+  font-size:13px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  background:transparent;
+  cursor:pointer;
+  font-weight:500;
+  transition:.25s;
+}
+
+button:hover{
+  background:var(--accent);
+  color:#fff;
+  border-color:var(--accent);
+  transform:translateY(-1px);
+}
+
+.output{
+  margin-top:18px;
+  padding:14px;
+  border-radius:14px;
+  border:1px solid var(--border);
+  background:var(--card);
+  min-height:52px;
+  font-size:14px;
+  box-shadow:var(--shadow);
+  transition:.3s;
+}
+
+/* BACK BUTTON PREMIUM */
+.back{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-top:26px;
+  padding:10px 16px;
+  font-size:13px;
+  text-decoration:none;
+  color:var(--text);
+  border:1px solid var(--border);
+  border-radius:12px;
+  background:var(--card);
+  box-shadow:var(--shadow);
+  transition:.3s;
+}
+
+.back:hover{
+  background:linear-gradient(135deg,var(--accent),#8aa0ff);
+  color:#fff;
+  transform:translateY(-2px);
+}
+
+.toast{
+  position:fixed;
+  bottom:24px;
+  left:50%;
+  transform:translateX(-50%);
+  background:var(--card);
+  color:var(--text);
+  padding:10px 16px;
+  border-radius:12px;
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+  opacity:0;
+  transition:.4s;
+  font-size:13px;
+}
+
+.toast.show{
+  opacity:1;
+  transform:translateX(-50%) translateY(-6px);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header">
+  <h2>Fungsi Output JavaScript</h2>
+  <div class="toggle" onclick="mode()">🌙 / ☀️ Mode</div>
+</div>
+
+<div class="item">
+  <div class="title">document.write()</div>
+  <div class="desc">Menulis langsung ke halaman web (dibuka di tab baru)</div>
+  <button onclick="pakaiWrite()">jalankan</button>
+</div>
+
+<div class="item">
+  <div class="title">alert()</div>
+  <div class="desc">Menampilkan popup notifikasi sederhana</div>
+  <button onclick="pakaiAlert()">jalankan</button>
+</div>
+
+<div class="item">
+  <div class="title">console.log()</div>
+  <div class="desc">Menampilkan output di console browser (F12)</div>
+  <button onclick="pakaiConsole()">jalankan</button>
+</div>
+
+<div class="item">
+  <div class="title">innerHTML</div>
+  <div class="desc">Menampilkan output langsung di halaman web</div>
+  <button onclick="pakaiHTML()">jalankan</button>
+</div>
+
+<div class="output" id="output">hasil akan muncul di sini...</div>
+
+<a href="index.html" class="back">← Kembali ke Index</a>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+function mode(){
+  document.body.classList.toggle("dark");
+}
+
+function toast(msg){
+  let t=document.getElementById("toast");
+  t.innerText=msg;
+  t.classList.add("show");
+  setTimeout(()=>t.classList.remove("show"),1500);
+}
+
+function pakaiWrite(){
+  let w=window.open("","_blank");
+  w.document.write("<h2 style='font-family:sans-serif'>Output document.write()</h2>");
+  toast("document.write dijalankan");
+}
+
+function pakaiAlert(){
+  alert("ini alert()");
+  toast("alert ditampilkan");
+}
+
+function pakaiConsole(){
+  console.log("ini console.log()");
+  document.getElementById("output").innerHTML="cek console (F12)";
+  toast("cek console browser");
+}
+
+function pakaiHTML(){
+  document.getElementById("output").innerHTML="output innerHTML aktif ✨";
+  toast("innerHTML tampil");
+}
+</script>
+
+</body>
+</html>

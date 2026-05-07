@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Latihan JavaScript</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<!-- ICON -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root {
+    --bg: #0f172a;
+    --text: #ffffff;
+    --sub: #cbd5e1;
+    --primary: #4a90e2;
+    --card: #ffffff;
+    --nav: rgba(0,0,0,0.85);
+}
+
+body.light {
+    --bg: #f8fafc;
+    --text: #0f172a;
+    --sub: #475569;
+    --card: #ffffff;
+    --nav: rgba(255,255,255,0.9);
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
+
+/* NAVBAR */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 22px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--nav);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    z-index: 1000;
+    box-sizing: border-box;
+}
+
+.toggle {
+    cursor: pointer;
+    padding: 6px 16px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.1);
+}
+
+/* HERO */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.hero h1 {
+    font-size: 44px;
+    margin-bottom: 10px;
+}
+
+.line {
+    width: 50px;
+    height: 3px;
+    background: var(--primary);
+    margin: 15px auto;
+    border-radius: 10px;
+}
+
+.sub {
+    color: var(--sub);
+}
+
+/* BUTTON */
+.start-btn {
+    margin-top: 30px;
+    padding: 14px 36px;
+    border-radius: 30px;
+    background: var(--card);
+    color: #111;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    transition: 0.3s;
+}
+
+.start-btn:hover {
+    transform: translateY(-4px);
+    background: var(--primary);
+    color: white;
+}
+
+/* MENU */
+.menu-section {
+    padding: 100px 20px;
+}
+
+.menu {
+    max-width: 800px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+/* CARD */
+.btn {
+    background: var(--card);
+    color: #111;
+    padding: 45px;
+    border-radius: 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.25);
+    transition: 0.3s;
+}
+
+.btn:hover {
+    transform: translateY(-6px);
+    background: var(--primary);
+    color: white;
+}
+
+/* FOOTER */
+.footer {
+    background: #0a0a0a;
+    color: #ccc;
+    padding: 60px 20px 20px;
+}
+
+.footer-container {
+    max-width: 900px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+}
+
+.footer h3 {
+    color: white;
+}
+
+.footer p {
+    font-size: 14px;
+}
+
+/* SOCIAL */
+.social {
+    margin-top: 15px;
+}
+
+.social a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 42px;
+    height: 42px;
+    margin-right: 10px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.social a:hover {
+    background: var(--primary);
+    transform: translateY(-4px);
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 13px;
+    opacity: 0.6;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <h2>My JavaScript Project</h2>
+    <div class="toggle" onclick="toggleMode()">🌙 / ☀️</div>
+</nav>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>Selamat Datang 👋</h1>
+        <div class="line"></div>
+        <p class="sub">
+            di halaman web hasil pembelajaran JavaScript Semester 2 <br>
+            oleh <b style="color: var(--primary)">Rafi Danu Pradita</b>
+        </p>
+
+        <a href="#menu" class="start-btn" onclick="scrollToMenu(event)">Mulai 🚀</a>
+    </div>
+</section>
+
+<section id="menu" class="menu-section">
+    <div class="menu">
+
+        <a href="output.html" class="btn">📤 Output</a>
+        <a href="variabel.html" class="btn">📦 Variabel</a>
+
+        <a href="input.html" class="btn">⌨️ Input</a>
+        <a href="operator.html" class="btn">➗ Operator</a>
+
+        <a href="percabangan.html" class="btn">🔀 Percabangan</a>
+        <a href="perulangan.html" class="btn">🔁 Perulangan</a>
+
+        <a href="array.html" class="btn">🧩 Array</a>
+        <a href="fungsi.html" class="btn">⚙️ Fungsi</a>
+
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="footer-container">
+
+        <div>
+            <h3>My JavaScript Project</h3>
+            <p>Website pembelajaran JavaScript Semester 2 oleh Rafi Danu Pradita.</p>
+
+            <div class="social">
+                <a href="https://www.instagram.com/rafidanupradita?igsh=NGlodWdzbng5aW51" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@rafiiiii811?_r=1&_t=ZS-95poGJRGuor" target="_blank"><i class="fab fa-tiktok"></i></a>
+                <a href="https://wa.me/6288225326247" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+
+        <div>
+            <h3>Menu</h3>
+            <p>Output, Variabel, Input, Operator, dan lainnya.</p>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 Rafi Danu Pradita
+    </div>
+</footer>
+
+<script>
+function toggleMode() {
+    document.body.classList.toggle("light");
+
+    if(document.body.classList.contains("light")){
+        localStorage.setItem("mode", "light");
+    } else {
+        localStorage.setItem("mode", "dark");
+    }
+}
+
+if(localStorage.getItem("mode") === "light"){
+    document.body.classList.add("light");
+}
+
+/* SCROLL SUPER HALUS */
+function scrollToMenu(e) {
+    e.preventDefault();
+
+    const target = document.getElementById("menu").offsetTop;
+    const start = window.pageYOffset;
+    const distance = target - start;
+    const duration = 1000;
+    let startTime = null;
+
+    function animation(currentTime) {
+        if (!startTime) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const progress = timeElapsed / duration;
+
+        const ease = progress < 0.5
+            ? 2 * progress * progress
+            : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+
+        window.scrollTo(0, start + distance * ease);
+
+        if (timeElapsed < duration) {
+            requestAnimationFrame(animation);
+        }
+    }
+
+    requestAnimationFrame(animation);
+}
+</script>
+
+</body>
+</html>
