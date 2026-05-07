@@ -129,7 +129,13 @@ button:hover{
 <script>
 
 // 1. Membuat array nama sekolah
-var namaSekolah = ["SD", "SMP", "SMK", "Universitas"];
+var namaSekolah = [
+    "SDN 3 Karangnanas",
+    "SMP 5 Purwokerto",
+    "SMKN 1 Purwokerto",
+    "Universitas Gajah Mada"
+];
+
 var hasil = "";
 
 // 2. Tampilkan semua isi array
@@ -141,12 +147,12 @@ hasil += "</div>";
 
 // 3. Ubah nama sekolah menjadi contoh baru
 for (var i = 0; i < namaSekolah.length; i++) {
-    if (namaSekolah[i] === "SD") {
-        namaSekolah[i] = "SD Kranji 1";
-    } else if (namaSekolah[i] === "SMP") {
-        namaSekolah[i] = "Al Azhar Mesir";
-    } else if (namaSekolah[i] === "SMK") {
-        namaSekolah[i] = "Al Azhar Turki";
+    if (namaSekolah[i] === "SDN 3 Karangnanas") {
+        namaSekolah[i] = "SD Favorit";
+    } else if (namaSekolah[i] === "SMP 5 Purwokerto") {
+        namaSekolah[i] = "SMP Unggulan";
+    } else if (namaSekolah[i] === "SMKN 1 Purwokerto") {
+        namaSekolah[i] = "SMK Teknologi";
     }
 }
 
@@ -157,11 +163,11 @@ for (var i = 0; i < namaSekolah.length; i++) {
 }
 hasil += "</div>";
 
-// 5. Ganti SD dan SMP
+// 5. Ganti lagi
 for (var i = 0; i < namaSekolah.length; i++) {
     if (namaSekolah[i].indexOf("SD") !== -1) {
         namaSekolah[i] = "Sekolah Idaman";
-    } else if (namaSekolah[i].indexOf("Mesir") !== -1) {
+    } else if (namaSekolah[i].indexOf("SMP") !== -1) {
         namaSekolah[i] = "Sekolah Nyaman";
     }
 }
@@ -175,7 +181,7 @@ hasil += "</div>";
 
 // 7. Hapus data tertentu
 for (var i = 0; i < namaSekolah.length; i++) {
-    if (namaSekolah[i] === "Sekolah Idaman" || namaSekolah[i] === "Universitas") {
+    if (namaSekolah[i] === "Sekolah Idaman" || namaSekolah[i] === "Universitas Gajah Mada") {
         namaSekolah.splice(i, 1);
         i--;
     }
